@@ -1,12 +1,11 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Nexo Support</title>
 
   <style>
-
     *{
       margin:0;
       padding:0;
@@ -14,130 +13,213 @@
     }
 
     body{
-      font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-      background:#050505;
-      color:white;
-      overflow:hidden;
       min-height:100vh;
+      overflow:hidden;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+      color:white;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(139,92,246,.28), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(124,58,237,.38), transparent 38%),
+        linear-gradient(180deg,#050505 0%,#090513 55%,#030303 100%);
       display:flex;
-      justify-content:center;
       align-items:center;
+      justify-content:center;
+      padding:28px;
     }
 
-    .bg{
+    .orb{
       position:absolute;
-      width:700px;
-      height:700px;
-      background:radial-gradient(circle,#7c3aed55,#00000000);
-      filter:blur(120px);
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(168,85,247,.45),transparent 65%);
+      filter:blur(70px);
+      animation:float 8s ease-in-out infinite alternate;
+    }
+
+    .orb.one{
+      top:-180px;
+      left:-120px;
+    }
+
+    .orb.two{
+      right:-160px;
+      bottom:-190px;
+      animation-delay:1.5s;
     }
 
     .card{
       position:relative;
-      z-index:10;
-      width:90%;
-      max-width:720px;
-      padding:50px;
-      border-radius:35px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-      backdrop-filter:blur(25px);
+      z-index:2;
+      width:100%;
+      max-width:760px;
+      padding:64px 54px;
       text-align:center;
-      box-shadow:0 0 60px rgba(124,58,237,.25);
+      border-radius:38px;
+      background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.045));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 0 80px rgba(124,58,237,.28),
+        inset 0 1px 0 rgba(255,255,255,.14);
+      backdrop-filter:blur(28px);
+      animation:rise .8s ease both;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      color:#c4b5fd;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:26px;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 18px #22c55e;
     }
 
     h1{
-      font-size:64px;
-      margin-bottom:15px;
-      letter-spacing:2px;
+      font-size:72px;
+      line-height:.95;
+      letter-spacing:3px;
+      margin-bottom:24px;
+      text-shadow:0 0 34px rgba(255,255,255,.16);
     }
 
     p{
-      color:#bdbdbd;
-      line-height:1.8;
-      font-size:18px;
-      margin-top:20px;
+      max-width:620px;
+      margin:0 auto;
+      color:rgba(255,255,255,.72);
+      font-size:20px;
+      line-height:1.75;
+      font-weight:500;
     }
 
     .mail{
-      margin-top:30px;
-      font-size:22px;
-      color:#9f7aea;
-      font-weight:600;
+      margin-top:34px;
+      font-size:24px;
+      font-weight:800;
+      color:#a78bfa;
       word-break:break-word;
+      text-shadow:0 0 28px rgba(167,139,250,.45);
     }
 
     .button{
-      display:inline-block;
-      margin-top:35px;
-      padding:18px 35px;
-      border-radius:20px;
-      background:white;
-      color:black;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:38px;
+      min-width:260px;
+      padding:19px 36px;
+      border-radius:24px;
+      color:#050505;
+      background:linear-gradient(180deg,#ffffff,#e9e9ff);
       text-decoration:none;
-      font-weight:700;
-      transition:.3s;
+      font-size:18px;
+      font-weight:900;
+      box-shadow:0 18px 45px rgba(255,255,255,.12);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
 
     .button:hover{
-      transform:scale(1.05);
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:0 24px 60px rgba(167,139,250,.25);
+    }
+
+    .footer{
+      margin-top:34px;
+      color:rgba(255,255,255,.38);
+      font-size:14px;
+      letter-spacing:.4px;
+    }
+
+    @keyframes rise{
+      from{
+        opacity:0;
+        transform:translateY(24px) scale(.97);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+    @keyframes float{
+      from{
+        transform:translate3d(0,0,0) scale(1);
+      }
+      to{
+        transform:translate3d(35px,28px,0) scale(1.08);
+      }
     }
 
     @media(max-width:768px){
+      body{
+        padding:22px;
+      }
 
       .card{
-        padding:40px 25px;
-        border-radius:28px;
+        padding:46px 26px;
+        border-radius:32px;
       }
 
       h1{
-        font-size:52px;
+        font-size:58px;
       }
 
       p{
-        font-size:17px;
+        font-size:18px;
         line-height:1.7;
       }
 
       .mail{
-        font-size:20px;
+        font-size:21px;
       }
 
       .button{
         width:100%;
-        padding:18px;
-        font-size:18px;
+        min-width:0;
       }
-
     }
-
   </style>
 </head>
 
 <body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
 
-<div class="bg"></div>
+  <main class="card">
+    <div class="badge">
+      <span class="dot"></span>
+      Official Support Center
+    </div>
 
-<div class="card">
+    <h1>NEXO</h1>
 
-  <h1>NEXO</h1>
+    <p>
+      Welcome to the official Nexo Support Center. We are here to help you with
+      your account, videos, stories, reels, maps, chat, safety, security and
+      technical support.
+    </p>
 
-  <p>
-    Welcome to the official Nexo Support Center.
-    We are here to help you with your account,
-    videos, stories, reels, maps, chat,
-    security and technical support.
-  </p>
+    <div class="mail">nexosocialsupport@gmail.com</div>
 
-  <div class="mail">
-    nexosocialsupport@gmail.com
-  </div>
+    <a class="button" href="mailto:nexosocialsupport@gmail.com">
+      Contact Support
+    </a>
 
-  <a class="button" href="mailto:nexosocialsupport@gmail.com">
-    Contact Support
-  </a>
-
-</div>
-
+    <div class="footer">
+      Nexo Social · Premium social discovery experience
+    </div>
+  </main>
 </body>
 </html>
