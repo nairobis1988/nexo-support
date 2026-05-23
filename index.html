@@ -3,56 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexo Support</title>
+  <title>Nexo Support & Privacy Policy</title>
+  <meta name="description" content="Official Nexo Social Support Center and Privacy Policy." />
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    html{ scroll-behavior:smooth; }
 
     body{
       min-height:100vh;
-      overflow:hidden;
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
       color:white;
       background:
-        radial-gradient(circle at 50% 35%, rgba(139,92,246,.28), transparent 34%),
+        radial-gradient(circle at 50% 20%, rgba(139,92,246,.28), transparent 34%),
         radial-gradient(circle at 50% 100%, rgba(124,58,237,.38), transparent 38%),
         linear-gradient(180deg,#050505 0%,#090513 55%,#030303 100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
       padding:28px;
+      overflow-x:hidden;
     }
 
     .orb{
-      position:absolute;
+      position:fixed;
       width:520px;
       height:520px;
       border-radius:50%;
       background:radial-gradient(circle,rgba(168,85,247,.45),transparent 65%);
       filter:blur(70px);
       animation:float 8s ease-in-out infinite alternate;
+      pointer-events:none;
     }
 
-    .orb.one{
-      top:-180px;
-      left:-120px;
-    }
+    .orb.one{ top:-180px; left:-120px; }
+    .orb.two{ right:-160px; bottom:-190px; animation-delay:1.5s; }
 
-    .orb.two{
-      right:-160px;
-      bottom:-190px;
-      animation-delay:1.5s;
-    }
-
-    .card{
+    .wrap{
       position:relative;
       z-index:2;
       width:100%;
-      max-width:760px;
+      max-width:860px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+    }
+
+    .card{
+      width:100%;
       padding:64px 54px;
       text-align:center;
       border-radius:38px;
@@ -95,13 +92,29 @@
       text-shadow:0 0 34px rgba(255,255,255,.16);
     }
 
-    p{
-      max-width:620px;
-      margin:0 auto;
+    h2{
+      font-size:34px;
+      margin-bottom:18px;
+      color:#fff;
+    }
+
+    h3{
+      font-size:21px;
+      margin:28px 0 10px;
+      color:#ddd6fe;
+    }
+
+    p, li{
       color:rgba(255,255,255,.72);
-      font-size:20px;
+      font-size:18px;
       line-height:1.75;
       font-weight:500;
+    }
+
+    .hero-text{
+      max-width:620px;
+      margin:0 auto;
+      font-size:20px;
     }
 
     .mail{
@@ -135,6 +148,26 @@
       box-shadow:0 24px 60px rgba(167,139,250,.25);
     }
 
+    .privacy{
+      text-align:left;
+    }
+
+    .privacy ul{
+      padding-left:22px;
+      margin-top:8px;
+    }
+
+    .privacy a{
+      color:#c4b5fd;
+      font-weight:800;
+    }
+
+    .small{
+      margin-top:22px;
+      color:rgba(255,255,255,.48);
+      font-size:14px;
+    }
+
     .footer{
       margin-top:34px;
       color:rgba(255,255,255,.38);
@@ -143,47 +176,33 @@
     }
 
     @keyframes rise{
-      from{
-        opacity:0;
-        transform:translateY(24px) scale(.97);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-      }
+      from{ opacity:0; transform:translateY(24px) scale(.97); }
+      to{ opacity:1; transform:translateY(0) scale(1); }
     }
 
     @keyframes float{
-      from{
-        transform:translate3d(0,0,0) scale(1);
-      }
-      to{
-        transform:translate3d(35px,28px,0) scale(1.08);
-      }
+      from{ transform:translate3d(0,0,0) scale(1); }
+      to{ transform:translate3d(35px,28px,0) scale(1.08); }
     }
 
     @media(max-width:768px){
-      body{
-        padding:22px;
-      }
+      body{ padding:22px; }
 
       .card{
         padding:46px 26px;
         border-radius:32px;
       }
 
-      h1{
-        font-size:58px;
-      }
+      h1{ font-size:58px; }
+      h2{ font-size:28px; }
 
-      p{
-        font-size:18px;
+      p, li{
+        font-size:16px;
         line-height:1.7;
       }
 
-      .mail{
-        font-size:21px;
-      }
+      .hero-text{ font-size:18px; }
+      .mail{ font-size:21px; }
 
       .button{
         width:100%;
@@ -197,29 +216,173 @@
   <div class="orb one"></div>
   <div class="orb two"></div>
 
-  <main class="card">
-    <div class="badge">
-      <span class="dot"></span>
-      Official Support Center
-    </div>
+  <div class="wrap">
+    <main class="card">
+      <div class="badge">
+        <span class="dot"></span>
+        Official Support Center
+      </div>
 
-    <h1>NEXO</h1>
+      <h1>NEXO</h1>
 
-    <p>
-      Welcome to the official Nexo Support Center. We are here to help you with
-      your account, videos, stories, reels, maps, chat, safety, security and
-      technical support.
-    </p>
+      <p class="hero-text">
+        Welcome to the official Nexo Support Center. We are here to help you with
+        your account, videos, stories, reels, chat, safety, security, privacy and
+        technical support.
+      </p>
 
-    <div class="mail">nexosocialsupport@gmail.com</div>
+      <div class="mail">nexosocialsupport@gmail.com</div>
 
-    <a class="button" href="mailto:nexosocialsupport@gmail.com">
-      Contact Support
-    </a>
+      <a class="button" href="mailto:nexosocialsupport@gmail.com">
+        Contact Support
+      </a>
 
-    <div class="footer">
-      Nexo Social · Premium social discovery experience
-    </div>
-  </main>
+      <div class="footer">
+        Nexo Social · Premium social content experience
+      </div>
+    </main>
+
+    <section class="card privacy" id="privacy-policy">
+      <div class="badge">
+        <span class="dot"></span>
+        Privacy Policy
+      </div>
+
+      <h2>Privacy Policy for Nexo Social</h2>
+
+      <p class="small">
+        Effective date: May 23, 2026
+      </p>
+
+      <p>
+        Nexo Social (“Nexo”, “we”, “our”, or “us”) respects your privacy. This
+        Privacy Policy explains how we collect, use, store, and protect information
+        when users access or use the Nexo Social mobile application and related
+        services.
+      </p>
+
+      <h3>1. Information We Collect</h3>
+      <p>
+        We may collect information needed to operate the app, including account
+        information, profile details, email address, username, display name,
+        uploaded content, comments, messages, device information, notification
+        tokens, app activity, crash logs, and usage analytics.
+      </p>
+
+      <h3>2. User Content</h3>
+      <p>
+        Nexo allows users to create, upload, share, and interact with content such
+        as photos, videos, reels, stories, comments, profile information, and
+        community posts. Users are responsible for the content they upload and
+        share through the app.
+      </p>
+
+      <h3>3. Camera, Microphone, Photos and Storage</h3>
+      <p>
+        Nexo may request access to the camera, microphone, photo library, media
+        storage, and device files so users can create videos, reels, stories,
+        upload photos, record audio, send media, and use content creation features.
+        These permissions are used only to provide app functionality requested by
+        the user.
+      </p>
+
+      <h3>4. Notifications</h3>
+      <p>
+        We may collect and use push notification tokens to send notifications
+        related to comments, messages, interactions, updates, account activity,
+        safety alerts, and other app features.
+      </p>
+
+      <h3>5. Location Data</h3>
+      <p>
+        If location-based features are enabled, Nexo may request access to location
+        data to provide relevant app functionality. Users can control location
+        permissions from their device settings.
+      </p>
+
+      <h3>6. Firebase and Third-Party Services</h3>
+      <p>
+        Nexo may use Firebase and other trusted service providers for
+        authentication, cloud storage, database services, push notifications,
+        analytics, crash reporting, security, and app performance. These services
+        help us operate and improve the app.
+      </p>
+
+      <h3>7. Advertising and Analytics</h3>
+      <p>
+        Nexo may use analytics and advertising services to understand app usage,
+        improve performance, measure engagement, and support app monetization.
+        These services may collect device identifiers, app activity, and diagnostic
+        information according to their own privacy practices.
+      </p>
+
+      <h3>8. How We Use Information</h3>
+      <ul>
+        <li>To create and manage user accounts.</li>
+        <li>To provide content sharing, messaging, comments, videos, reels, and community features.</li>
+        <li>To store and display user-generated content.</li>
+        <li>To send notifications and app updates.</li>
+        <li>To improve app performance, safety, security, and user experience.</li>
+        <li>To prevent abuse, spam, fraud, or policy violations.</li>
+        <li>To comply with legal, safety, and platform requirements.</li>
+      </ul>
+
+      <h3>9. Sharing of Information</h3>
+      <p>
+        We do not sell personal information. Information may be shared with service
+        providers that help us operate the app, comply with legal obligations,
+        protect users, enforce policies, or provide features requested by users.
+        Public content shared by users may be visible to other users of the app.
+      </p>
+
+      <h3>10. Data Security</h3>
+      <p>
+        We use reasonable technical and organizational measures to help protect
+        user information. However, no online service can guarantee complete
+        security. Users should protect their account credentials and report any
+        suspicious activity.
+      </p>
+
+      <h3>11. Data Retention and Account Deletion</h3>
+      <p>
+        We retain information as needed to provide the app, maintain security,
+        comply with legal obligations, and resolve disputes. Users may request
+        account deletion or privacy assistance by contacting us at
+        <a href="mailto:nexosocialsupport@gmail.com">nexosocialsupport@gmail.com</a>.
+      </p>
+
+      <h3>12. Children’s Privacy</h3>
+      <p>
+        Nexo is not intended for children under the minimum age required by
+        applicable law. We do not knowingly collect personal information from
+        children where parental consent is required.
+      </p>
+
+      <h3>13. User Controls</h3>
+      <p>
+        Users can manage certain privacy controls through the app and device
+        settings, including notification permissions, camera access, microphone
+        access, media access, and location permissions.
+      </p>
+
+      <h3>14. Changes to This Policy</h3>
+      <p>
+        We may update this Privacy Policy from time to time. Any changes will be
+        posted on this page with an updated effective date.
+      </p>
+
+      <h3>15. Contact Us</h3>
+      <p>
+        If you have questions about this Privacy Policy, privacy practices, support,
+        account deletion, or user data, contact us at:
+        <br />
+        <a href="mailto:nexosocialsupport@gmail.com">nexosocialsupport@gmail.com</a>
+      </p>
+
+      <p class="small">
+        Nexo Social · Official Support Center · Privacy Policy
+      </p>
+    </section>
+  </div>
 </body>
 </html>
