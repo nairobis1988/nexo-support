@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "HKWJFB99TB.com.nairobis.nexo"
+        ],
+        "components": [
+          {
+            "/": "/post/*"
+          },
+          {
+            "/": "/video/*"
+          }
+        ]
+      }
+    ]
+  }
+}
