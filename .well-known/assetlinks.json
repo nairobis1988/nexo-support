@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.nexosocial.app",
+      "sha256_cert_fingerprints": [
+        "C0:5D:22:98:1A:42:DD:7F:7E:61:20:2B:D0:8D:89:7B:3E:57:9A:CF:81:A7:E6:C2:05:41:24:C7:0B:8A"
+      ]
+    }
+  }
+]
