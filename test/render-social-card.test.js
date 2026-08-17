@@ -12,9 +12,6 @@ import {
   SOCIAL_CARD_WIDTH,
   SOCIAL_CARD_HEIGHT,
   SOCIAL_CARD_CONTENT_HEIGHT,
-  SOCIAL_CARD_LOGO_LEFT,
-  SOCIAL_CARD_LOGO_SIZE,
-  SOCIAL_CARD_LOGO_TOP,
   SOCIAL_CARD_FALLBACK_LOGO_LEFT,
   SOCIAL_CARD_FALLBACK_LOGO_SIZE,
   SOCIAL_CARD_FALLBACK_LOGO_TOP,
@@ -50,12 +47,12 @@ test('renders video as JPEG and uses a geometric play icon', async () => {
   const card = await renderSocialCard({ type: 'video', authorName: 'Creador', caption: 'Video premium', preview, avatar: null, logoBytes });
   await assertJpeg(card);
   const svg = buildVerticalShareCardSvg({ type: 'video', authorName: 'Creador', caption: 'Video', hasPreview: true, hasAvatar: false });
-  assert.match(svg, /<circle cx="540" cy="888"/);
-  assert.match(svg, /<path d="M520 842 L520 934 L588 888 Z"/);
+  assert.match(svg, /<circle cx="540" cy="960"/);
+  assert.match(svg, /<path d="M520 914 L520 1006 L588 960 Z"/);
   assert.doesNotMatch(svg, /▶|&#x25B6;/);
 });
 
-test('production social card keeps native metadata copy out of the JPEG and places only the official logo at bottom right', async () => {
+test('social card with preview contains no embedded logo, footer or native metadata copy', async () => {
   const preview = { bytes: await fixtureImage('#176b87'), contentType: 'image/jpeg' };
   const card = await renderSocialCard({
     type: 'post',
@@ -68,12 +65,7 @@ test('production social card keeps native metadata copy out of the JPEG and plac
   await assertJpeg(card);
   assert.equal(SOCIAL_CARD_WIDTH, 1080);
   assert.equal(SOCIAL_CARD_HEIGHT, 1920);
-  assert.equal(SOCIAL_CARD_CONTENT_HEIGHT, 1776);
-  assert.equal(SOCIAL_CARD_LOGO_SIZE, 104);
-  assert.equal(SOCIAL_CARD_LOGO_LEFT, 932);
-  assert.equal(SOCIAL_CARD_LOGO_TOP, 1796);
-  assert.ok(SOCIAL_CARD_LOGO_TOP >= SOCIAL_CARD_CONTENT_HEIGHT);
-  assert.ok(SOCIAL_CARD_LOGO_TOP + SOCIAL_CARD_LOGO_SIZE <= SOCIAL_CARD_HEIGHT);
+  assert.equal(SOCIAL_CARD_CONTENT_HEIGHT, 1920);
   const svg = buildVerticalShareCardSvg({
     type: 'post',
     authorName: 'CEO NEXO',
@@ -81,7 +73,7 @@ test('production social card keeps native metadata copy out of the JPEG and plac
     hasPreview: true,
     hasAvatar: false,
   });
-  assert.doesNotMatch(svg, /<text|CEO NEXO|No duplicar|nexoapp\.art|NEXO SOCIAL|App Store|Google Play|Abrir en Nexo/);
+  assert.doesNotMatch(svg, /<text|footer|separator|logoGlow|CEO NEXO|No duplicar|nexoapp\.art|NEXO SOCIAL|App Store|Google Play|Abrir en Nexo/);
 });
 
 test('missing or invalid preview produces a raster Nexo fallback, never SVG', async () => {
@@ -104,9 +96,9 @@ test('missing or invalid preview produces a raster Nexo fallback, never SVG', as
   assert.doesNotMatch(fallbackSvg, /<text|<path|Contenido en Nexo|nexoapp\.art|Private author|Private caption|VIDEO/);
 });
 
-test('footer does not render avatar, author, caption, domain or other copy', () => {
+test('preview overlay has no footer, logo, avatar, author, caption, domain or other copy', () => {
   const svg = buildVerticalShareCardSvg({ type: 'post', authorName: 'Ana', caption: 'Caption', hasPreview: true, hasAvatar: true });
-  assert.doesNotMatch(svg, /<text|>N<\/text>|Ana|Caption|nexoapp\.art/);
+  assert.doesNotMatch(svg, /<text|footer|separator|logo|>N<\/text>|Ana|Caption|nexoapp\.art/);
 });
 
 test('normalizes, truncates and XML-escapes malicious Unicode text', () => {
@@ -140,8 +132,8 @@ test('vertical card contains no footer text and geometric play only for video', 
     assert.doesNotMatch(svg, /nexoapp\.art|NEXO SOCIAL|>VIDEO<|App Store|Google Play|Abrir en Nexo|>https?:\/\//i);
     assert.doesNotMatch(svg, /<text|Autor real|Caption real/);
   }
-  assert.doesNotMatch(post, /M520 842 L520 934 L588 888 Z/);
-  assert.match(video, /M520 842 L520 934 L588 888 Z/);
+  assert.doesNotMatch(post, /M520 914 L520 1006 L588 960 Z/);
+  assert.match(video, /M520 914 L520 1006 L588 960 Z/);
   assert.doesNotMatch(video, /▶|&#x25B6;/);
 });
 
