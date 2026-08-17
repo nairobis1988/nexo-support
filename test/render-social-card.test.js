@@ -13,6 +13,9 @@ import {
   SOCIAL_CARD_LOGO_LEFT,
   SOCIAL_CARD_LOGO_SIZE,
   SOCIAL_CARD_LOGO_TOP,
+  SOCIAL_CARD_FALLBACK_LOGO_LEFT,
+  SOCIAL_CARD_FALLBACK_LOGO_SIZE,
+  SOCIAL_CARD_FALLBACK_LOGO_TOP,
 } from '../lib/render-social-card.js';
 
 const logoPath = fileURLToPath(new URL('../assets/nexo-logo-official.png', import.meta.url));
@@ -81,6 +84,17 @@ test('missing or invalid preview produces a raster Nexo fallback, never SVG', as
     assert.equal(card.contentType, 'image/jpeg');
     assert.equal(card.usedFallback, true);
   }
+  assert.equal(SOCIAL_CARD_FALLBACK_LOGO_SIZE, 156);
+  assert.equal(SOCIAL_CARD_FALLBACK_LOGO_LEFT + (SOCIAL_CARD_FALLBACK_LOGO_SIZE / 2), 600);
+  assert.equal(SOCIAL_CARD_FALLBACK_LOGO_TOP + (SOCIAL_CARD_FALLBACK_LOGO_SIZE / 2), 315);
+  const fallbackSvg = buildSocialCardSvg({
+    type: 'video',
+    authorName: 'Private author',
+    caption: 'Private caption',
+    hasPreview: false,
+    hasAvatar: false,
+  });
+  assert.doesNotMatch(fallbackSvg, /<text|<path|Contenido en Nexo|nexoapp\.art|Private author|Private caption|VIDEO/);
 });
 
 test('horizontal crawler image does not invent or render an avatar', () => {
