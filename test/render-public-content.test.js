@@ -13,6 +13,9 @@ test('renders dynamic Open Graph and canonical metadata for a post', () => {
   assert.match(html, /<meta property="og:image:width" content="1080">/);
   assert.match(html, /<meta property="og:image:height" content="1920">/);
   assert.match(html, /<meta property="og:image:alt"/);
+  assert.match(html, /<meta property="fb:app_id" content="1359041262925385">/);
+  assert.equal((html.match(/property="fb:app_id"/g) ?? []).length, 1);
+  assert.equal((html.match(/property="og:image"/g) ?? []).length, 1);
   assert.match(html, /<link rel="canonical" href="https:\/\/nexoapp\.art\/post\/post_123">/);
   assert.match(html, /twitter:card" content="summary_large_image"/);
   assert.match(html, /twitter:image" content="https:\/\/nexoapp\.art\/media\/social-card\/post\/post_123"/);
@@ -25,6 +28,11 @@ test('renders dynamic Open Graph and canonical metadata for a post', () => {
 
 test('renders video indicator without embedding or autoplaying a video', () => {
   const html = renderPublicContent({ type: 'video', id: 'video_123', authorName: 'Ana', caption: 'Video' });
+  assert.match(html, /<meta property="fb:app_id" content="1359041262925385">/);
+  assert.equal((html.match(/property="fb:app_id"/g) ?? []).length, 1);
+  assert.equal((html.match(/property="og:image"/g) ?? []).length, 1);
+  assert.match(html, /<meta property="og:image:width" content="1080">/);
+  assert.match(html, /<meta property="og:image:height" content="1920">/);
   assert.match(html, /aria-label="Video">▶/);
   assert.doesNotMatch(html, /<video|autoplay|og:video/);
   assert.match(html, /media\/preview\/video\/video_123/);
