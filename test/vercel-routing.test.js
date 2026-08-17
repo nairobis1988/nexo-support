@@ -10,6 +10,8 @@ test('contains only the approved public-content rewrites', () => {
     { source: '/video/:id', destination: '/api/public-content?type=video&id=:id' },
     { source: '/media/preview/post/:id', destination: '/api/media-preview?type=post&id=:id' },
     { source: '/media/preview/video/:id', destination: '/api/media-preview?type=video&id=:id' },
+    { source: '/media/social-card/post/:id', destination: '/api/social-card?type=post&id=:id' },
+    { source: '/media/social-card/video/:id', destination: '/api/social-card?type=video&id=:id' },
   ]);
   assert.equal(config.redirects, undefined);
 });

@@ -1,14 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { renderPublicContent, renderUnavailable } from '../lib/render-public-content.js';
 
 test('renders dynamic Open Graph and canonical metadata for a post', () => {
   const html = renderPublicContent({ type: 'post', id: 'post_123', authorName: 'Ana', caption: 'Hola Nexo' });
   assert.match(html, /<meta property="og:title"/);
   assert.match(html, /<meta property="og:description" content="Hola Nexo">/);
-  assert.match(html, /<meta property="og:image" content="https:\/\/nexoapp\.art\/media\/preview\/post\/post_123">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/nexoapp\.art\/media\/social-card\/post\/post_123">/);
+  assert.match(html, /<meta property="og:image:secure_url"/);
+  assert.match(html, /<meta property="og:image:type" content="image\/jpeg">/);
+  assert.match(html, /<meta property="og:image:width" content="1200">/);
+  assert.match(html, /<meta property="og:image:height" content="630">/);
+  assert.match(html, /<meta property="og:image:alt"/);
   assert.match(html, /<link rel="canonical" href="https:\/\/nexoapp\.art\/post\/post_123">/);
   assert.match(html, /twitter:card" content="summary_large_image"/);
+  assert.match(html, /twitter:image" content="https:\/\/nexoapp\.art\/media\/social-card\/post\/post_123"/);
+  assert.match(html, /<div class="preview"><img src="https:\/\/nexoapp\.art\/media\/preview\/post\/post_123"/);
+  const body = html.match(/<body>[\s\S]*<\/body>/)?.[0] ?? '';
+  assert.equal(createHash('sha256').update(body).digest('hex'), '3a6efa04ad629a5d13f33a7f2ee761eb420320bcac2e56cbb80baed1152b341a');
 });
 
 test('renders video indicator without embedding or autoplaying a video', () => {

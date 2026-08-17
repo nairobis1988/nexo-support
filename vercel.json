@@ -26,6 +26,14 @@
     {
       "source": "/media/preview/video/:id",
       "destination": "/api/media-preview?type=video&id=:id"
+    },
+    {
+      "source": "/media/social-card/post/:id",
+      "destination": "/api/social-card?type=post&id=:id"
+    },
+    {
+      "source": "/media/social-card/video/:id",
+      "destination": "/api/social-card?type=video&id=:id"
     }
   ]
 }
