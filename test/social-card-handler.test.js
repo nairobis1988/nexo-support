@@ -14,7 +14,7 @@ function responseRecorder() {
 }
 
 function fakeCard() {
-  return { bytes: Buffer.from('safe-jpeg'), contentType: 'image/jpeg', width: 1200, height: 630 };
+  return { bytes: Buffer.from('safe-jpeg'), contentType: 'image/jpeg', width: 1080, height: 1920 };
 }
 
 test('valid social card has JPEG, cache, length, nosniff and ETag headers', async () => {

@@ -10,8 +10,8 @@ test('renders dynamic Open Graph and canonical metadata for a post', () => {
   assert.match(html, /<meta property="og:image" content="https:\/\/nexoapp\.art\/media\/social-card\/post\/post_123">/);
   assert.match(html, /<meta property="og:image:secure_url"/);
   assert.match(html, /<meta property="og:image:type" content="image\/jpeg">/);
-  assert.match(html, /<meta property="og:image:width" content="1200">/);
-  assert.match(html, /<meta property="og:image:height" content="630">/);
+  assert.match(html, /<meta property="og:image:width" content="1080">/);
+  assert.match(html, /<meta property="og:image:height" content="1920">/);
   assert.match(html, /<meta property="og:image:alt"/);
   assert.match(html, /<link rel="canonical" href="https:\/\/nexoapp\.art\/post\/post_123">/);
   assert.match(html, /twitter:card" content="summary_large_image"/);
