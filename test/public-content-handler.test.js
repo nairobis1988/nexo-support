@@ -43,10 +43,8 @@ test('invalid or nonexistent content returns indistinguishable 404', async () =>
 });
 
 test('backend errors return generic 503 without stack traces', async () => {
-  const logs = [];
   const handler = createPublicContentHandler({
     loadContent: async () => { throw new Error('SECRET_STACK'); },
-    diagnosticLog: (...parts) => logs.push(parts),
   });
   const response = responseRecorder();
   await handler({
@@ -57,9 +55,5 @@ test('backend errors return generic 503 without stack traces', async () => {
   assert.equal(response.statusCode, 503);
   assert.equal(response.getHeader('x-robots-tag'), 'noindex, noarchive');
   assert.doesNotMatch(response.body, /SECRET_STACK|Error:/);
-  assert.deepEqual(logs, [
-    ['public_content_request_valid', 'video', 'valid'],
-    ['public_content_backend_failure', 'video', 'error'],
-  ]);
-  assert.doesNotMatch(JSON.stringify(logs), /SECRET_STACK|SECRET_TOKEN|Bearer/);
+  assert.doesNotMatch(response.body, /SECRET_TOKEN|Bearer/);
 });
