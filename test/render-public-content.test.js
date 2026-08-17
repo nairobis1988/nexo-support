@@ -16,6 +16,8 @@ test('renders dynamic Open Graph and canonical metadata for a post', () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/nexoapp\.art\/post\/post_123">/);
   assert.match(html, /twitter:card" content="summary_large_image"/);
   assert.match(html, /twitter:image" content="https:\/\/nexoapp\.art\/media\/social-card\/post\/post_123"/);
+  assert.match(html, /<link rel="icon" type="image\/png" sizes="1024x1024" href="\/assets\/nexo-logo-official\.png">/);
+  assert.match(html, /<link rel="apple-touch-icon" sizes="1024x1024" href="\/assets\/nexo-logo-official\.png">/);
   assert.match(html, /<div class="preview"><img src="https:\/\/nexoapp\.art\/media\/preview\/post\/post_123"/);
   const body = html.match(/<body>[\s\S]*<\/body>/)?.[0] ?? '';
   assert.equal(createHash('sha256').update(body).digest('hex'), '3a6efa04ad629a5d13f33a7f2ee761eb420320bcac2e56cbb80baed1152b341a');
