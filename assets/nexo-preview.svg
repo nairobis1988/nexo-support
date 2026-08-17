@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07050d"/><stop offset="1" stop-color="#4c1d95"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="600" cy="280" r="170" fill="#8b5cf6" opacity=".18"/>
+  <text x="600" y="330" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="112" font-weight="800" letter-spacing="18">NEXO</text>
+  <text x="600" y="405" text-anchor="middle" fill="#d8cced" font-family="Arial,sans-serif" font-size="30">Contenido social en tiempo real</text>
+</svg>
